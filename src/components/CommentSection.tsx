@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { giscusConfig } from '@/lib/config';
+import { utterancesConfig } from '@/lib/config';
 
 interface CommentSectionProps {
   slug: string;
@@ -11,20 +11,16 @@ export default function CommentSection({ slug }: CommentSectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!giscusConfig.repo || !containerRef.current) return;
+    if (!containerRef.current) return;
 
     const script = document.createElement('script');
-    script.src = 'https://giscus.app/client.js';
-    script.defer = true;
-    script.setAttribute('data-repo', giscusConfig.repo);
-    script.setAttribute('data-repo-id', giscusConfig.repoId);
-    script.setAttribute('data-category', giscusConfig.category);
-    script.setAttribute('data-category-id', giscusConfig.categoryId);
-    script.setAttribute('data-mapping', giscusConfig.mapping);
-    script.setAttribute('data-strict', String(giscusConfig.strict));
-    script.setAttribute('data-reactions-enabled', String(giscusConfig.reactionsEnabled));
-    script.setAttribute('data-theme', giscusConfig.theme);
-    script.setAttribute('data-lang', giscusConfig.lang);
+    script.src = 'https://utteranc.es/client.js';
+    script.async = true;
+    script.setAttribute('repo', utterancesConfig.repo);
+    script.setAttribute('issue-term', utterancesConfig.issueTerm);
+    script.setAttribute('theme', utterancesConfig.theme);
+    script.setAttribute('label', utterancesConfig.label);
+    script.setAttribute('crossorigin', 'anonymous');
 
     containerRef.current.appendChild(script);
 
@@ -36,9 +32,9 @@ export default function CommentSection({ slug }: CommentSectionProps) {
   return (
     <div className="glass p-6 mt-8">
       <h3 className="text-xl font-semibold text-white mb-4">评论</h3>
-      <div ref={containerRef}>
+      <div ref={containerRef} className="min-h-[200px]">
         <p className="text-white/50 text-sm">
-          配置 giscusConfig 后可在此查看评论
+          加载评论中...
         </p>
       </div>
     </div>

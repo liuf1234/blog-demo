@@ -1,19 +1,15 @@
 export const siteConfig = {
   title: '我的博客',
   description: '收藏并点评优质文章',
-  url: 'http://localhost:3000',
+  url: 'https://liuf1234.github.io/blog-demo',
   author: '博主',
 };
 
-export const giscusConfig = {
-  repo: '',
-  repoId: '',
-  category: 'Announcements',
-  categoryId: '',
-  mapping: 'pathname' as const,
-  strict: 0,
-  reactionsEnabled: 1,
-  theme: 'preferred_color_scheme' as const,
+export const utterancesConfig = {
+  repo: 'liuf1234/blog-demo',
+  issueTerm: 'pathname' as const,
+  theme: 'preferred-color-scheme' as const,
+  label: 'comments',
   lang: 'zh-CN',
 };
 
